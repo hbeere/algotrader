@@ -167,7 +167,7 @@ class Market extends Robinhood {
 			async.whilst(
 				() => { return next === null; },
 				callback => {
-					let newDate = moment().add(days, 'days');
+					let newDate = moment().add(days++, 'days');
 					_this.getHoursOn(newDate.toDate()).then(hours => {
 						if (hours.isOpen) next = hours.open;
 						callback();
@@ -192,7 +192,7 @@ class Market extends Robinhood {
 			async.whilst(
 				() => { return next === null; },
 				callback => {
-					let newDate = moment().add(days, 'days');
+					let newDate = moment().add(days++, 'days');
 					_this.getHoursOn(newDate.toDate()).then(hours => {
 						if (hours.isOpen) next = hours.close;
 						callback();
